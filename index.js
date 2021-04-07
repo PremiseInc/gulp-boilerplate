@@ -160,7 +160,7 @@ function defaultBoilerplate( config = {} ) {
 		},
 	} );
 
-	const { paths, watchOptions } = config;
+	const { paths, watchOptions, syncStartPath, syncBaseDir } = config;
 	let { postcssPlugins, rollupPlugins, syncWatchFiles } = config;
 
 	if ( ! postcssPlugins ) {
@@ -295,17 +295,16 @@ function defaultBoilerplate( config = {} ) {
 	// =========================
 
 	function startSync() {
-		baseDir = './' + baseDir;
 		const browserSync = require( 'browser-sync' );
 
 		if ( browserSync.active ) {
 			browserSync.reload();
 		} else {
 			browserSync.init( {
-				startPath: 'mockup',
+				syncStartPath,
 				ghostMode: false,
 				server: {
-					baseDir,
+					baseDir: './' . syncBaseDir,
 				},
 				files: syncWatchFiles,
 				port: 5759,
@@ -349,7 +348,8 @@ function wordpressBoilerplate( config = {} ) {
 	const { themeId } = config;
 
 	return defaultBoilerplate( {
-		baseDir: `./themes/${ themeId }`,
+		syncBaseDir: `./themes/${ themeId }`,
+		syncStartPath: 'mockup',
 		syncWatchFiles: [
 			// Only watch theme and mockup assets
 			`./themes/${ themeId }/assets/img/**`,
