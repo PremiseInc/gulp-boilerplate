@@ -307,7 +307,7 @@ function defaultBoilerplate( config = {} ) {
 				startPath: syncStartPath,
 				ghostMode: false,
 				server: {
-					baseDir: './' + syncBaseDir,
+					baseDir: `./${ syncBaseDir }`,
 				},
 				files: syncWatchFiles,
 				port: 5759,
@@ -351,8 +351,8 @@ function wordpressBoilerplate( config = {} ) {
 	const { themeId } = config;
 
 	return defaultBoilerplate( {
-		syncBaseDir: `./themes/${ themeId }`,
 		syncStartPath: 'mockup',
+		syncBaseDir: `themes/${ themeId }`,
 		syncWatchFiles: [
 			// Only watch theme and mockup assets
 			`./themes/${ themeId }/assets/img/**`,
