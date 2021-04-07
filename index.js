@@ -7,7 +7,7 @@ const { src, dest, watch, series, parallel, lastRun } = require( 'gulp' );
 const logger = require( 'gulplog' );
 const chalk = require( 'chalk' );
 const through = require( 'through2' );
-const getDependencies = require( './gulp/lib/dependencies' )();
+const getDependencies = require( './lib/dependencies' )();
 
 // General Gulp Plugins
 const filter = require( 'gulp-custom-filter' );
