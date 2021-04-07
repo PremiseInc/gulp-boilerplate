@@ -1,1 +1,4 @@
 ﻿node_modules
+*.map
+*.css
+*.min.js
