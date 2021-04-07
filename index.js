@@ -138,20 +138,20 @@ function getGlobs( subdirs = '' ) {
 }
 
 function parseDefaults( config, defaults ) {
-	const { subdirs = '' } = { ...defaults, ...config };
+	const parsedConfig = { ...defaults, ...config };
 
-	const { paths } = config;
-
-	if ( ! paths ) {
-		paths = getGlobs( subdirs );
+	if ( ! parsedConfig.paths ) {
+		parsedConfig.paths = getGlobs( parsedConfig.subdirs );
 	}
+
+	return parsedConfig;
 }
 
 // =========================
 // ! Boilerplates
 // =========================
 
-function defaultBoilerplate( config ) {
+function defaultBoilerplate( config = {} ) {
 	config = parseDefaults( config, {
 		watchOptions: {
 			ignoreinitial: false,
@@ -340,7 +340,7 @@ function defaultBoilerplate( config ) {
 	};
 }
 
-function wordpressBoilerplate( config ) {
+function wordpressBoilerplate( config = {} ) {
 	config = parseDefaults( config, {
 		subdirs: '{mu-plugins,themes}',
 	} );
