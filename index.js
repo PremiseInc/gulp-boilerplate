@@ -163,7 +163,7 @@ function defaultBoilerplate( config = {} ) {
 		},
 	} );
 
-	const { paths, watchOptions, syncStartPath, syncBaseDir } = config;
+	const { paths, watchOptions, syncStartPath, syncBaseDir = '' } = config;
 	let { postcssPlugins, rollupPlugins, syncWatchFiles } = config;
 
 	if ( ! postcssPlugins ) {
@@ -304,10 +304,10 @@ function defaultBoilerplate( config = {} ) {
 			browserSync.reload();
 		} else {
 			browserSync.init( {
-				syncStartPath,
+				startPath: syncStartPath,
 				ghostMode: false,
 				server: {
-					baseDir: './' . syncBaseDir,
+					baseDir: './' + syncBaseDir,
 				},
 				files: syncWatchFiles,
 				port: 5759,
