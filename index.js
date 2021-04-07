@@ -160,7 +160,8 @@ function defaultBoilerplate( config = {} ) {
 		},
 	} );
 
-	let { paths, postcssPlugins, rollupPlugins, syncWatchFiles } = config;
+	const { paths, watchOptions } = config;
+	let { postcssPlugins, rollupPlugins, syncWatchFiles } = config;
 
 	if ( ! postcssPlugins ) {
 		postcssPlugins = [
