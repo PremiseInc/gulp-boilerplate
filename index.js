@@ -371,6 +371,11 @@ function wordpressBoilerplate( config = {} ) {
 // =========================
 
 module.exports = function( template, config ) {
+	if ( typeof template === 'object' ) {
+		config = template;
+		template = 'default';
+	}
+
 	let boilerplate = defaultBoilerplate;
 
 	switch ( template ) {
