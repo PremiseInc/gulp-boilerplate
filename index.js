@@ -77,6 +77,12 @@ function checkDependencies( task ) {
 			return true;
 		}
 
+		// File in question has changed, continue
+		if ( fs.statSync( file.path ).mtime.getTime() > since ) {
+			logger.info( 'Change detected to %s', chalk.blue( file.path.substr( file.base.length ) ) );
+			return true;
+		}
+
 		const dependencies = getDependencies( file.path );
 
 		let hasChanges = false;
