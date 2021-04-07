@@ -100,37 +100,40 @@ function checkDependencies( task ) {
 // =========================
 
 function getGlobs( subdirs = '' ) {
-	subdirs = './' + subdirs;
+	let prefix = '.';
+	if ( subdirs ) {
+		prefix = `./${ subdirs }`;
+	}
 
 	return {
 		styles: {
 			input: [
 				// Both those in a css...
-				`${ subdirs }/**/css/*.scss`,
+				`${ prefix }/**/css/*.scss`,
 				// ... or scss folder
-				`${ subdirs }/**/scss/*.scss`,
+				`${ prefix }/**/scss/*.scss`,
 				// Make sure partials arent' matched
 				`!./**/_*.scss`,
 			],
 			watch: [
-				`${ subdirs }/**/*.scss`,
+				`${ prefix }/**/*.scss`,
 			],
 			output: './',
 		},
 		scripts: {
 			input: [
 				// Both those in a js folder...
-				`${ subdirs }/**/js/*.js`,
+				`${ prefix }/**/js/*.js`,
 				// ... or a src subfolder
-				`${ subdirs }/**/js/{src,lib}/*.js`,
+				`${ prefix }/**/js/{src,lib}/*.js`,
 				// Skip compiled/vendor stuff though
-				`!${ subdirs }/**/*.min.js`,
-				`!${ subdirs }/**/node_modules/**/*.js`,
+				`!${ prefix }/**/*.min.js`,
+				`!${ prefix }/**/node_modules/**/*.js`,
 			],
 			watch: [
-				`${ subdirs }/**/*.js`,
-				`!${ subdirs }/**/*.min.js`,
-				`!${ subdirs }/**/{vendor,node_modules}/**/*.js`,
+				`${ prefix }/**/*.js`,
+				`!${ prefix }/**/*.min.js`,
+				`!${ prefix }/**/{vendor,node_modules}/**/*.js`,
 			],
 			output: './',
 		},
