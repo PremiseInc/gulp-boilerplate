@@ -221,7 +221,7 @@ function defaultBoilerplate( config = {} ) {
 			.pipe( sass() )
 			.on( 'error', sass.logError )
 			// With PostCSS Preset Env + CSS NANO
-			.pipe( postcss( postCssPlugins ) )
+			.pipe( postcss( postcssPlugins ) )
 			// Save to ../css
 			.pipe( rename( output => {
 				output.dirname = output.dirname.replace( 'scss', 'css' );
