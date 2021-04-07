@@ -1,0 +1,17 @@
+{
+  "name": "@premise/gulp-framework",
+	"private": true,
+  "version": "1.0.0",
+  "description": "Boilerplate kit for gulp scripts for Premise projects.",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/premiseinc/gulp-framework.git"
+  },
+}
