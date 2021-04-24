@@ -170,11 +170,11 @@ function defaultBoilerplate( config = {} ) {
 	} );
 
 	const { paths, watchOptions, syncStartPath, syncBaseDir = '' } = config;
-	let { postcssPlugins, rollupPlugins, syncWatchFiles } = config;
+	let { postcssPlugins, postcssPresetEnvConfig, rollupPlugins, syncWatchFiles } = config;
 
 	if ( ! postcssPlugins ) {
 		postcssPlugins = [
-			postcssPresetEnv(),
+			postcssPresetEnv( postcssPresetEnvConfig ),
 			cssnano(),
 		];
 	}
