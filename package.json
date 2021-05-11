@@ -8,7 +8,8 @@
     "lib": "lib"
   },
   "scripts": {
-    "test": "gulp"
+    "test": "gulp",
+		"deptest": "node dependency-test.js"
   },
   "repository": {
     "type": "git",
