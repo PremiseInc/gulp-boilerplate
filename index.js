@@ -138,8 +138,9 @@ function getGlobs( subdirs = '' ) {
 			],
 			watch: [
 				`${ prefix }/**/*.js`,
+				`${ prefix }/**/*.json`,
 				`!${ prefix }/**/*.min.js`,
-				`!${ prefix }/**/{vendor,node_modules}/**/*.js`,
+				`!${ prefix }/**/{vendor,node_modules}/*`,
 			],
 			output: './',
 		},
