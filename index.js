@@ -136,7 +136,13 @@ function getGlobs( subdirs = '' ) {
 				`!${ prefix }/**/*.min.js`,
 				`!${ prefix }/**/node_modules/**/*.js`,
 			],
+			lint: [
+				`${ prefix }/**/*.js`,
+				`!${ prefix }/**/*.min.js`,
+				`!${ prefix }/**/{vendor,node_modules}/**/*.js`,
+			],
 			watch: [
+				`${ prefix }/**/*.json`,
 				`${ prefix }/**/*.js`,
 				`!${ prefix }/**/*.min.js`,
 				`!${ prefix }/**/{vendor,node_modules}/**/*.js`,
@@ -248,7 +254,7 @@ function defaultBoilerplate( config = {} ) {
 
 	function validateScripts() {
 		// Check all watchable scripts
-		return src( paths.scripts.watch, sinceLastTask( validateScripts ) )
+		return src( paths.scripts.lint, sinceLastTask( validateScripts ) )
 			// Exclude those not part of the repo (e.g. other plugins/themes)
 			.pipe( gitignore() )
 			// Print the filename for reference
