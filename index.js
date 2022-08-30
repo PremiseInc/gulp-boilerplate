@@ -363,7 +363,7 @@ function wordpressBoilerplate( config = {} ) {
 			// Only watch theme and mockup assets
 			`./themes/${ themeId }/assets/img/**`,
 			`./themes/${ themeId }/assets/css/theme.css`,
-			`./themes/${ themeId }/assets/js/dist/theme.js`,
+			`./themes/${ themeId }/assets/js/dist/theme.min.js`,
 			`./themes/${ themeId }/mockup/*.html`,
 			`./themes/${ themeId }/mockup/*.css`,
 			`./themes/${ themeId }/mockup/*.js`,
