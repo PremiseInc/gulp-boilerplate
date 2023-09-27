@@ -21,7 +21,7 @@ const postcssPresetEnv = require( 'postcss-preset-env' );
 const cssnano = require( 'cssnano' );
 
 // Linting Handling
-const eslint = require( 'gulp-eslint' );
+const eslint = require( 'gulp-eslint-new' );
 
 // Script Handling
 const rollup = require( 'rollup' );
@@ -261,7 +261,7 @@ function defaultBoilerplate( config = {} ) {
 			.pipe( log( 'Linting %s' ) )
 			// Lint and display issues
 			.pipe( eslint() )
-			.pipe( eslint.formatEach( 'codeframe' ) );
+			.pipe( eslint.formatEach() );
 	}
 
 	function compileScripts() {
