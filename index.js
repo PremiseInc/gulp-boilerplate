@@ -15,7 +15,6 @@ const rename = require( 'gulp-rename' );
 const sass = require( 'gulp-dart-sass' );
 const postcss = require( 'gulp-postcss' );
 const postcssPresetEnv = require( 'postcss-preset-env' );
-const cssnano = require( 'cssnano' );
 const csso = require( 'postcss-csso' );
 
 // Linting Handling
