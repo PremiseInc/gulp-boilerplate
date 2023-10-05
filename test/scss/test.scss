@@ -1,5 +1,15 @@
 @use 'colors' as *;
 
+@property --percentage {
+	inherits: false;
+	initial-value: 0%;
+	syntax: '<percentage>';
+}
+
 html {
 	color: $color;
+	margin-top: 10px;
+	margin-left: 20px;
+	margin-bottom: 10px;
+	margin-right: 20px;
 }
