@@ -222,7 +222,6 @@ function defaultBoilerplate( config = {} ) {
 
 	function compileStyles() {
 		return src( paths.styles.input, { ...gulpSrc, sourcemaps: true } )
-			.pipe( log( 'checking %s' ) )
 			// Exclude those that haven't been modified (including dependencies)
 			.pipe( checkDependencies( compileStyles ) )
 			// Print the filename for reference
