@@ -1,4 +1,4 @@
-import widget from './inc/widget';
+import widget from '../inc/widget';
 
 ( () => {
 	widget( window );
