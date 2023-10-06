@@ -6,6 +6,7 @@ const path = require( 'path' );
 const { src, dest, watch, series, parallel, lastRun } = require( 'gulp' );
 const through = require( 'through2' );
 const getDependencies = require( './lib/dependencies' )();
+const cssnanoPreset = require( './lib/cssnano-preset-custom' );
 
 // General Gulp Plugins
 const filter = require( 'gulp-custom-filter' );
@@ -15,7 +16,7 @@ const rename = require( 'gulp-rename' );
 const sass = require( 'gulp-dart-sass' );
 const postcss = require( 'gulp-postcss' );
 const postcssPresetEnv = require( 'postcss-preset-env' );
-const csso = require( 'postcss-csso' );
+const cssnano = require( 'cssnano' );
 
 // Linting Handling
 const eslint = require( 'gulp-eslint-new' );
@@ -168,12 +169,14 @@ function defaultBoilerplate( config = {} ) {
 	} );
 
 	const { paths, watchOptions, syncStartPath, syncBaseDir = '' } = config;
-	let { postcssPlugins, postcssPresetEnvConfig, cssoConfig, rollupPlugins, syncWatchFiles } = config;
+	let { postcssPlugins, postcssPresetEnvConfig, cssnanoConfig, rollupPlugins, syncWatchFiles } = config;
 
 	if ( ! postcssPlugins ) {
 		postcssPlugins = [
 			postcssPresetEnv( postcssPresetEnvConfig ),
-			csso( cssoConfig ),
+			cssnano( {
+				preset: cssnanoPreset( cssnanoConfig ),
+			} ),
 		];
 	}
 
