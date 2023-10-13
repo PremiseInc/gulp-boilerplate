@@ -5,6 +5,7 @@ const path = require( 'path' );
 // Gulp + utilities
 const { src, dest, watch, series, parallel, lastRun } = require( 'gulp' );
 const through = require( 'through2' );
+const rollupEach = require( './lib/rollup-each' );
 const getDependencies = require( './lib/dependencies' )();
 const cssnanoPreset = require( './lib/cssnano-preset-custom' );
 
@@ -23,7 +24,6 @@ const eslint = require( 'gulp-eslint-new' );
 
 // Script Handling
 const rollup = require( 'rollup' );
-const rollupEach = require( 'gulp-rollup-each' );
 const { babel } = require( '@rollup/plugin-babel' );
 const json = require( '@rollup/plugin-json' );
 const { nodeResolve } = require( '@rollup/plugin-node-resolve' );

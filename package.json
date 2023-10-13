@@ -38,7 +38,6 @@
     "gulp-eslint-new": "^1.8.4",
     "gulp-postcss": "^9.0.1",
     "gulp-rename": "^2.0.0",
-    "gulp-rollup-each": "^4.0.1",
     "postcss": "^8.4.31",
     "postcss-preset-env": "^9.1.4",
     "rollup": "^3.29.4",
