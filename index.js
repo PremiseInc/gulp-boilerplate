@@ -168,7 +168,7 @@ function defaultBoilerplate( config = {} ) {
 		},
 	} );
 
-	const { paths, watchOptions, syncStartPath, syncBaseDir = '' } = config;
+	const { paths, watchOptions, syncStartPath, syncBaseDir = '', syncCertDir = path.dirname(process.cwd()), syncKeyFile, syncCertFile } = config;
 	let { postcssPlugins, postcssPresetEnvConfig, cssnanoConfig, rollupPlugins, syncWatchFiles } = config;
 
 	if ( ! postcssPlugins ) {
@@ -300,6 +300,16 @@ function defaultBoilerplate( config = {} ) {
 	function startSync() {
 		const browserSync = require( 'browser-sync' );
 
+		let https = false;
+		const keyFile = syncKeyFile ?? path.join( syncCertDir, 'localhost-key.pem' );
+		const certFile = syncCertFile ?? path.join( syncCertDir, 'localhost.pem' );
+		if ( fs.existsSync( keyFile ) && fs.existsSync( certFile ) ) {
+			https = {
+				key: keyFile,
+				cert: certFile,
+			};
+		}
+
 		if ( browserSync.active ) {
 			browserSync.reload();
 		} else {
@@ -311,6 +321,7 @@ function defaultBoilerplate( config = {} ) {
 				},
 				files: syncWatchFiles,
 				port: 5759,
+				https,
 			} );
 		}
 	}
