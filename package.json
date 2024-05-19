@@ -38,11 +38,13 @@
     "gulp-eslint-new": "^1.8.4",
     "gulp-postcss": "^9.0.1",
     "gulp-rename": "^2.0.0",
-    "is-wsl": "2.2",
     "postcss": "^8.4.31",
     "postcss-preset-env": "^9.1.4",
     "rollup": "^3.29.4",
     "sass": "^1.68.0",
     "through2": "^4.0.2"
-  }
+  },
+	"overrides": {
+		"is-wsl": "2.2"
+	}
 }
