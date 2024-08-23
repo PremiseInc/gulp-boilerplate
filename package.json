@@ -16,35 +16,35 @@
     "url": "git+https://gitlab.com/premiseinc/gulp-framework.git"
   },
   "dependencies": {
-    "@babel/core": "^7.23.0",
-    "@babel/eslint-parser": "^7.22.15",
-    "@babel/plugin-transform-runtime": "^7.22.15",
+    "@babel/core": "^7.25.2",
+    "@babel/eslint-parser": "^7.25.1",
+    "@babel/plugin-transform-runtime": "^7.25.4",
     "@rollup/plugin-babel": "^6.0.4",
-    "@rollup/plugin-commonjs": "^25.0.5",
-    "@rollup/plugin-json": "^6.0.1",
-    "@rollup/plugin-node-resolve": "^15.2.2",
-    "@rollup/plugin-replace": "^5.0.3",
+    "@rollup/plugin-commonjs": "^26.0.1",
+    "@rollup/plugin-json": "^6.1.0",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-replace": "^5.0.7",
     "@rollup/plugin-terser": "^0.4.4",
-    "autoprefixer": "^10.4.16",
-    "browser-sync": "^2.29.3",
-    "cssnano": "^6.0.1",
-    "cssnano-preset-advanced": "^6.0.1",
-    "eslint": "^8.50.0",
-    "eslint-plugin-react": "^7.33.2",
-    "gulp": "^4.0.2",
+    "autoprefixer": "^10.4.20",
+    "browser-sync": "^3.0.2",
+    "cssnano": "^7.0.5",
+    "cssnano-preset-advanced": "^7.0.5",
+    "eslint": "^9.9.0",
+    "eslint-plugin-react": "^7.35.0",
+    "gulp": "^5.0.0",
     "gulp-babel": "^8.0.0",
     "gulp-custom-filter": "^0.4.4",
     "gulp-dart-sass": "^1.1.0",
-    "gulp-eslint-new": "^1.8.4",
-    "gulp-postcss": "^9.0.1",
+    "gulp-eslint-new": "^2.2.0",
+    "gulp-postcss": "^10.0.0",
     "gulp-rename": "^2.0.0",
-    "postcss": "^8.4.31",
-    "postcss-preset-env": "^9.1.4",
-    "rollup": "^3.29.4",
-    "sass": "^1.68.0",
+    "postcss": "^8.4.41",
+    "postcss-preset-env": "^10.0.2",
+    "rollup": "^4.21.0",
+    "sass": "^1.77.8",
     "through2": "^4.0.2"
   },
-	"overrides": {
-		"is-wsl": "2.2"
-	}
+  "overrides": {
+    "is-wsl": "2.2"
+  }
 }
