@@ -230,7 +230,9 @@ function defaultBoilerplate( config = {} ) {
 			// Print the filename for reference
 			.pipe( log( 'Compiling %s' ) )
 			// With Dart Sass
-			.pipe( sass() )
+			.pipe( sass( {
+				silenceDeprecations: [ 'legacy-js-api' ],
+			} ) )
 			.on( 'error', sass.logError )
 			// With PostCSS Preset Env + CSS NANO
 			.pipe( postcss( postcssPlugins ) )
