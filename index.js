@@ -110,6 +110,7 @@ function getGlobs( subdirs = '' ) {
 				// Both those in a css...
 				`${ prefix }/**/css/*.scss`,
 				// ... or scss folder
+				`${ prefix }/**/src/scss/*.scss`,
 				`${ prefix }/**/scss/*.scss`,
 				// Make sure partials arent' matched
 				`!./**/_*.scss`,
@@ -124,7 +125,9 @@ function getGlobs( subdirs = '' ) {
 				// Both those in a js folder...
 				`${ prefix }/**/js/*.js`,
 				// ... or a src subfolder
-				`${ prefix }/**/js/{src,lib}/*.js`,
+				`${ prefix }/**/src/js/*.js`,
+				`${ prefix }/**/js/src/*.js`,
+				`${ prefix }/**/js/lib/*.js`,
 				// Skip compiled/vendor stuff though
 				`!${ prefix }/**/*.min.js`,
 				`!${ prefix }/**/node_modules/**/*.js`,
@@ -238,7 +241,10 @@ function defaultBoilerplate( config = {} ) {
 			.pipe( postcss( postcssPlugins ) )
 			// Save to ../css
 			.pipe( rename( output => {
-				output.dirname = output.dirname.replace( 'scss', 'css' );
+				output.dirname = output.dirname.replace(
+					path.join( 'src', 'scss' ),
+					path.join( 'dist', 'css' ),
+				).replace( 'scss', 'css' );
 			} ) )
 			.pipe( log( 'Compiled %s' ) )
 			// Save sourcemaps to same folder
@@ -285,6 +291,9 @@ function defaultBoilerplate( config = {} ) {
 			// Save to ../dist if in /src
 			.pipe( rename( output => {
 				output.dirname = output.dirname.replace(
+					path.join( 'src', 'js' ),
+					path.join( 'dist', 'js' ),
+				).replace(
 					path.join( 'js', 'src' ),
 					path.join( 'js', 'dist' ),
 				);
@@ -379,6 +388,27 @@ function wordpressBoilerplate( config = {} ) {
 	} );
 };
 
+function newWordpressBoilerplate( config = {} ) {
+	config = parseDefaults( config, {
+		subdirs: '{mu-plugins,themes}',
+	} );
+
+	const { themeId } = config;
+
+	return wordpressBoilerplate( {
+		syncWatchFiles: [
+			// Only watch theme and mockup assets
+			`./themes/${ themeId }/assets/img/**`,
+			`./themes/${ themeId }/assets/dist/css/theme.css`,
+			`./themes/${ themeId }/assets/dist/js/theme.min.js`,
+			`./themes/${ themeId }/mockup/*.html`,
+			`./themes/${ themeId }/mockup/*.css`,
+			`./themes/${ themeId }/mockup/*.js`,
+		],
+		...config,
+	} );
+};
+
 // =========================
 // ! API
 // =========================
@@ -394,6 +424,10 @@ module.exports = function( template, config ) {
 	switch ( template ) {
 		case 'wordpress':
 			boilerplate = wordpressBoilerplate;
+			break;
+
+		case 'wordpress-new':
+			boilerplate = newWordpressBoilerplate;
 			break;
 	}
 
