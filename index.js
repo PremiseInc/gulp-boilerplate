@@ -130,6 +130,7 @@ function getGlobs( subdirs = '' ) {
 				`${ prefix }/**/js/lib/*.js`,
 				// Skip compiled/vendor stuff though
 				`!${ prefix }/**/*.min.js`,
+				`!${ prefix }/**/dist/js/*.js`,
 				`!${ prefix }/**/node_modules/**/*.js`,
 			],
 			lint: [
